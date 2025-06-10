@@ -78,4 +78,41 @@ AND release_year < 2000;\
 -- Invalid\
 -- SELECT title\
 -- FROM films\
--- WHERE release_year > 1994 AND < 2000;}
+-- WHERE release_year > 1994 AND < 2000;\
+\
+SELECT title\
+FROM films\
+WHERE (release_year = 1994 OR release_year = 1995)\
+AND (certification = 'PG' OR certification = 'R');\
+\
+SELECT title\
+FROM films\
+WHERE release_year >= 1994\
+AND release_year <= 2000;\
+\
+SELECT title\
+FROM films\
+WHERE release_year\
+BETWEEN 1994 AND 2000;\
+\
+SELECT title\
+FROM films\
+WHERE release_year\
+BETWEEN 1994 AND 2000 AND country='UK';\
+\
+-- Pattern Matching (LIKE, NOT LIKE, IN)\
+SELECT title\
+FROM films\
+WHERE country = 'Japan';\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE 'Ade%';\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE 'Ev_';\
+\
+SELECT name\
+FROM people\
+WHERE name NOT LIKE 'A.%';}
