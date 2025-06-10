@@ -313,4 +313,46 @@ GROUP BY certification, language;\
 \
 -- GROUP BY with ORDER BY\
 SELECT certification, COUNT(title) AS title_count\
-FROM films}
+FROM films\
+\
+GROUP BY certification\
+ORDER BY title_count DESC;\
+\
+-- GROUP BY with ORDER BY and LIMIT\
+SELECT certification, COUNT(title) AS title_count\
+FROM films\
+GROUP BY certification\
+ORDER BY title_count DESC\
+LIMIT 3;\
+\
+-- HAVING\
+-- Invalid query\
+-- SELECT release_year, COUNT(title) AS title_count\
+-- FROM films\
+-- GROUP BY release_year\
+-- WHERE COUNT(title) > 10;\
+\
+-- Corrected query\
+SELECT release_year, COUNT(title) AS title_count\
+FROM films\
+GROUP BY release_year\
+HAVING COUNT(title) > 10;\
+\
+-- Full example with WHERE, GROUP BY, HAVING, ORDER BY, LIMIT\
+SELECT certification, COUNT(title) AS title_count\
+FROM films\
+WHERE certification IN ('G', 'PG', 'PG-13')\
+GROUP BY certification\
+HAVING COUNT(title) > 500\
+ORDER BY title_count DESC\
+LIMIT 3;\
+\
+-- HAVING vs WHERE\
+SELECT title\
+FROM films\
+WHERE release_year = 2000;\
+\
+SELECT release_year\
+FROM films\
+GROUP BY release_year\
+HAVING AVG(duration) > 120;}
