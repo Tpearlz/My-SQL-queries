@@ -24,4 +24,58 @@ FROM people;\
 \
 SELECT name\
 FROM people\
-LIMIT 10;}
+LIMIT 10;\
+\
+SELECT title\
+FROM films\
+WHERE release_year <= 1960;\
+\
+SELECT title\
+FROM films\
+WHERE release_year = 1960;\
+\
+SELECT title\
+FROM films\
+WHERE release_year <> 1960;\
+\
+SELECT title\
+FROM films\
+WHERE country = 'Japan';\
+\
+SELECT item\
+FROM coats\
+WHERE color = 'green'\
+LIMIT 5;\
+\
+-- Multiple Criteria (AND, OR, BETWEEN)\
+SELECT *\
+FROM coats\
+WHERE color = 'yellow' OR length = 'short';\
+\
+SELECT *\
+FROM coats\
+WHERE color = 'yellow' AND length = 'short';\
+\
+SELECT *\
+FROM coats\
+WHERE buttons BETWEEN 1 AND 5;\
+\
+SELECT title\
+FROM films\
+WHERE release_year = 1994\
+OR release_year = 2000;\
+\
+-- Invalid\
+-- SELECT title\
+-- FROM films\
+-- WHERE release_year = 1994 OR 2000;\
+\
+SELECT title\
+FROM films\
+WHERE release_year > 1994\
+AND release_year < 2000;\
+\
+-- Invalid\
+-- SELECT title\
+-- FROM films\
+-- WHERE release_year > 1994 AND < 2000;}
