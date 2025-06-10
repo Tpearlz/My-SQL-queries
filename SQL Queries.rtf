@@ -115,4 +115,202 @@ WHERE name LIKE 'Ev_';\
 \
 SELECT name\
 FROM people\
-WHERE name NOT LIKE 'A.%';}
+WHERE name NOT LIKE 'A.%';\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE '%r';\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE '__t%';\
+\
+SELECT title\
+FROM films\
+WHERE release_year = 1920\
+OR release_year = 1930\
+OR release_year = 1940;\
+\
+SELECT title\
+FROM films\
+WHERE release_year IN (1920, 1930, 1940);\
+\
+SELECT title\
+FROM films\
+WHERE country IN ('Germany', 'France');\
+\
+-- NULL Handling\
+SELECT COUNT(*) AS count_records\
+FROM people;\
+\
+SELECT *\
+FROM people;\
+\
+SELECT name\
+FROM people\
+WHERE birthdate IS NULL;\
+\
+SELECT COUNT(*) AS no_birthdates\
+FROM people\
+WHERE birthdate IS NULL;\
+\
+SELECT COUNT(name) AS count_birthdates\
+FROM people\
+WHERE birthdate IS NOT NULL;\
+\
+SELECT\
+COUNT(certification)\
+AS count_certification\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE '%r';\
+\
+SELECT name\
+FROM people\
+WHERE name LIKE '__t%';\
+\
+SELECT title\
+FROM films\
+WHERE release_year = 1920\
+OR release_year = 1930\
+OR release_year = 1940;\
+\
+SELECT title\
+FROM films\
+WHERE release_year IN (1920, 1930, 1940);\
+\
+SELECT title\
+FROM films\
+WHERE country IN ('Germany', 'France');\
+\
+-- NULL Handling\
+SELECT COUNT(*) AS count_records\
+FROM people;\
+\
+SELECT *\
+FROM people;\
+\
+SELECT name\
+FROM people\
+WHERE birthdate IS NULL;\
+\
+SELECT COUNT(*) AS no_birthdates\
+FROM people\
+WHERE birthdate IS NULL;\
+\
+SELECT COUNT(name) AS count_birthdates\
+FROM people\
+WHERE birthdate IS NOT NULL;\
+\
+SELECT\
+COUNT(certification)\
+AS count_certification\
+\
+-- Arithmetic\
+SELECT (4 + 3);\
+\
+SELECT (4 * 3);\
+\
+SELECT (4 - 3);\
+\
+SELECT (4 / 3);\
+\
+SELECT (4.0 / 3.0);\
+\
+-- Aliasing with arithmetic\
+SELECT (gross - budget)\
+FROM films;\
+\
+SELECT (gross - budget) AS profit\
+FROM films;\
+\
+-- Aliasing with functions\
+SELECT MAX(budget), MAX(duration)\
+FROM films;\
+\
+SELECT MAX(budget) AS max_budget,\
+MAX(duration) AS max_duration\
+FROM films;\
+\
+-- Order of execution (invalid query example)\
+-- SELECT budget AS max_budget\
+-- FROM films\
+-- WHERE max_budget IS NOT NULL;\
+\
+\
+\
+-- ORDER BY\
+SELECT title, budget\
+FROM films\
+ORDER BY budget;\
+\
+SELECT title, budget\
+FROM films\
+ORDER BY title;\
+\
+SELECT title, budget\
+FROM films\
+ORDER BY budget ASC;\
+\
+SELECT title, budget\
+FROM films\
+ORDER BY budget DESC;\
+\
+SELECT title, budget\
+FROM films\
+WHERE budget IS NOT NULL\
+ORDER BY budget DESC;\
+\
+SELECT title\
+FROM films\
+ORDER BY release_year;\
+\
+SELECT title, release_year\
+FROM films\
+ORDER BY release_year;\
+\
+-- ORDER BY multiple fields\
+SELECT title, wins\
+FROM best_movies\
+ORDER BY wins DESC;\
+\
+SELECT title, wins, imdb_score\
+FROM best_movies\
+ORDER BY wins DESC, imdb_score DESC;\
+\
+-- Different orders\
+SELECT birthdate, name\
+FROM people\
+ORDER BY birthdate, name DESC;\
+\
+-- ORDER BY with LIMIT\
+SELECT item\
+FROM coats\
+WHERE color = `yellow`\
+ORDER BY length\
+LIMIT 3;\
+\
+-- GROUP BY single fields\
+SELECT certification, COUNT(title) AS title_count\
+FROM films\
+GROUP BY certification;\
+\
+-- Error example\
+-- SELECT certification, title\
+-- FROM films\
+-- GROUP BY certification;\
+\
+-- Corrected query\
+SELECT certification, COUNT(title) AS count_title\
+FROM films\
+GROUP BY certification;\
+\
+-- GROUP BY multiple fields\
+SELECT certification, language, COUNT(title) AS title_count\
+FROM films\
+GROUP BY certification, language;\
+\
+-- GROUP BY with ORDER BY\
+SELECT certification, COUNT(title) AS title_count\
+FROM films}
