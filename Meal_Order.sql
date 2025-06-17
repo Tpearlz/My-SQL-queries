@@ -145,9 +145,18 @@ WITH revenue AS (\'a0\'a0
 \f0\fs32 LIMIT 3;\'a0
 \f1\fs24 \
 \cb1 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb2 \strokec3 \
+\pard\pardeftab720\partightenfactor0
 
-\f0\fs32 \cb2 \strokec3 \'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cf0 \'a0\'97PART 2\
+\
+\
+\pard\pardeftab720\partightenfactor0
+
+\f1\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb1 \strokec3 \
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \
