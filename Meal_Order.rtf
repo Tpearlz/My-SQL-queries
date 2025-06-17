@@ -66,5 +66,89 @@ SELECT\'a0 \cb1 \uc0\u8232 \cb2 \'a0 meals.meal_id, \'a0 \cb1 \uc0\u8232 \cb2 \'
 
 \f0\fs32 \cb2 \strokec3 \'a0
 \f1\fs24 \cb1 \strokec3 \
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs32 \cf0 \cb2 \strokec3 \'97Bringing Revenue and Cost Together\
 \
+WITH revenue AS (\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0SELECT\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0\'a0\'a0meals.meal_id,\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0\'a0\'a0SUM(meal_price * order_quantity) AS revenue\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0FROM meals\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0JOIN orders ON meals.meal_id = orders.meal_id\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0GROUP BY meals.meal_id\'a0
+\f1\fs24 \
+
+\f0\fs32 ),\'a0\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 cost AS (\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0SELECT\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0\'a0\'a0meals.meal_id,\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0\'a0\'a0SUM(meal_cost * stocked_quantity) AS cost\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0FROM meals\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0JOIN stock ON meals.meal_id = stock.meal_id\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0GROUP BY meals.meal_id\'a0
+\f1\fs24 \
+
+\f0\fs32 )
+\f1\fs24 \
+
+\f0\fs32 SELECT\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0revenue.meal_id,\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0revenue,\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0cost,\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 \'a0\'a0revenue - cost AS profit\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 FROM revenue\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 JOIN cost ON revenue.meal_id = cost.meal_id\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 ORDER BY profit DESC\'a0\'a0
+\f1\fs24 \
+
+\f0\fs32 LIMIT 3;\'a0
+\f1\fs24 \
+\cb1 \strokec3 \
+
+\f0\fs32 \cb2 \strokec3 \'a0
+\f1\fs24 \cb1 \strokec3 \
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \
 }
