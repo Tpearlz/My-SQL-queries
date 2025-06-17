@@ -217,11 +217,13 @@ WITH revenue AS (\'a0\'a0
 \f2\fs29\fsmilli14667 \strokec3 ORDER BY foodr_month ASC\'a0
 \f1\fs24 \strokec3 \
 
-\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;\
+\
 \pard\pardeftab720\partightenfactor0
 
-\f0\fs32 \cf0 \cb2 \strokec3 \
+\f1\fs24 \cf0 \strokec3 \
+
+\f0\fs32 \cb2 \strokec3 \
 \
 \pard\pardeftab720\partightenfactor0
 
