@@ -241,6 +241,66 @@ SELECT\'a0
 \f2\fs29\fsmilli14667 \strokec3 LIMIT 3;
 \f1\fs24 \strokec3 \
 \
+\
+
+\f2\fs29\fsmilli14667 \strokec3 \'97Registrations Running Total\
+WITH reg_dates AS (\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SELECT\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0user_id,\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0MIN(order_date) AS reg_date\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0FROM orders\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0GROUP BY user_id),\'a0\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0registrations AS (\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SELECT\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0DATE_TRUNC('month', reg_date) :: DATE AS foodr_month,\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0COUNT(DISTINCT user_id) AS regs\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0FROM reg_dates\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0GROUP BY foodr_month)\'a0\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 SELECT\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0foodr_month,\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0regs,\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SUM(regs) OVER (ORDER BY foodr_month ASC) AS regs_rt\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 FROM registrations\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 ORDER BY foodr_month ASC\'a0
+\f1\fs24 \strokec3 \
+
+\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;
+\f1\fs24 \strokec3 \
+\
 \pard\pardeftab720\partightenfactor0
 
 \f0\fs32 \cf0 \cb2 \strokec3 \
