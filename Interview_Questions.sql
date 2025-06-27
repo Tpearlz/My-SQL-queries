@@ -8,3 +8,10 @@ Avg (amount) AS order_amount
 from postmates_orders
 GROUP BY customer_id
 ORDER BY order_amount ASC;
+
+SELECT client_id,
+EXTRACT(month FROM time_id) AS month,
+COUNT(DISTINCT user_id) AS unique_users
+FROM fact_events
+GROUP BY client_id, month
+ORDER BY client_id, month ASC;
