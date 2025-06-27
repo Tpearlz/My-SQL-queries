@@ -15,3 +15,9 @@ COUNT(DISTINCT user_id) AS unique_users
 FROM fact_events
 GROUP BY client_id, month
 ORDER BY client_id, month ASC;
+
+
+SELECT bike_number, MAX(end_time) AS returned_date
+FROM dc_bikeshare_q1_2012
+GROUP BY bike_number
+ORDER BY returned_date ASC;
