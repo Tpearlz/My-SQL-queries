@@ -8,7 +8,7 @@
 \pard\pardeftab720\partightenfactor0
 
 \f0\fs32 \cf0 \cb2 \expnd0\expndtw0\kerning0
-\outl0\strokewidth0 \strokec3 \'97Calculating Revenuue\
+\'97Calculating Revenuue\
 \
 SELECT\'a0 \cb1 \uc0\u8232 \cb2 \'a0 order_id,\'a0 \cb1 \uc0\u8232 \cb2 \'a0 SUM(meal_price * order_quantity) AS revenue\'a0 \cb1 \uc0\u8232 \cb2 FROM meals\'a0 \cb1 \uc0\u8232 \cb2 JOIN orders ON meals.meal_id = orders.meal_id\'a0 \cb1 \uc0\u8232 \cb2 GROUP BY order_id; \cb1 \uc0\u8232 \cb2 \'a0\cb1 \uc0\u8232 \cb2 --Calculating Cost\'a0\
 SELECT\'a0 \cb1 \uc0\u8232 \cb2 \'a0 meals.meal_id, \'a0 \cb1 \uc0\u8232 \cb2 \'a0 SUM(meal_cost * stocked_quantity) AS cost \'a0 \cb1 \uc0\u8232 \cb2 FROM meals\'a0 \cb1 \uc0\u8232 \cb2 JOIN stock ON meals.meal_id = stock.meal_id\'a0 \cb1 \uc0\u8232 \cb2 GROUP BY meals.meal_id\'a0 \cb1 \uc0\u8232 \cb2 ORDER BY meals.cost DESC\'a0 \cb1 \uc0\u8232 \cb2 LIMIT 3;\
@@ -18,58 +18,57 @@ SELECT\'a0 \cb1 \uc0\u8232 \cb2 \'a0 meals.meal_id, \'a0 \cb1 \uc0\u8232 \cb2 \'
 \
 
 \f0\fs32 WITH costs_and_quantities AS (\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0SELECT\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0SELECT\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0\'a0\'a0meals.meal_id,\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0\'a0\'a0meals.meal_id,\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0\'a0\'a0SUM(stocked_quantity) AS quantity,\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0\'a0\'a0SUM(stocked_quantity) AS quantity,\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0\'a0\'a0SUM(meal_cost * stocked_quantity) AS cost\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0\'a0\'a0SUM(meal_cost * stocked_quantity) AS cost\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0FROM meals\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0FROM meals\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0JOIN stock ON meals.meal_id = stock.meal_id\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0JOIN stock ON meals.meal_id = stock.meal_id\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0GROUP BY meals.meal_id\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0GROUP BY meals.meal_id\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 )\'a0\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 )\'a0\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 SELECT\'a0\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 SELECT\'a0\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0meal_id,\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0meal_id,\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0quantity,\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0quantity,\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0cost\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 \'a0cost\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 FROM costs_and_quantities\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 FROM costs_and_quantities\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 ORDER BY cost DESC\'a0\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 ORDER BY cost DESC\'a0\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 LIMIT 3;\'a0
-\f1\fs24 \cb1 \strokec3 \
+\f0\fs32 \cb2 LIMIT 3;\'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cb2 \strokec3 \'a0
-\f1\fs24 \cb1 \strokec3 \
-\pard\pardeftab720\partightenfactor0
+\f0\fs32 \cb2 \'a0
+\f1\fs24 \cb1 \
 
-\f0\fs32 \cf0 \cb2 \strokec3 \'97Bringing Revenue and Cost Together\
+\f0\fs32 \cb2 \'97Bringing Revenue and Cost Together\
 \
 WITH revenue AS (\'a0\'a0
 \f1\fs24 \
@@ -145,172 +144,127 @@ WITH revenue AS (\'a0\'a0
 
 \f0\fs32 LIMIT 3;\'a0
 \f1\fs24 \
-\cb1 \strokec3 \
-\pard\pardeftab720\partightenfactor0
-\cf0 \cb2 \strokec3 \
-\pard\pardeftab720\partightenfactor0
+\cb1 \
+\cb2 \
 
-\f0\fs32 \cf0 \'a0\'97PART 2\
+\f0\fs32 \'a0\'97PART 2\
 \
 \'97Registration Setup\
 \pard\pardeftab720\partightenfactor0
 
-\f2\fs29\fsmilli14667 \cf0 \cb1 \strokec3 SELECT\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \cf0 \cb1 SELECT\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0user_id,\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0user_id,\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0MIN(order_date) AS reg_date\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0MIN(order_date) AS reg_date\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 FROM orders\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 FROM orders\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 GROUP BY user_id\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 GROUP BY user_id\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 ORDER BY user_id\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 ORDER BY user_id\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 LIMIT 3; 
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 LIMIT 3; 
+\f1\fs24 \
 \pard\pardeftab720\partightenfactor0
 
-\f0\fs32 \cf0 \cb2 \strokec3 \
+\f0\fs32 \cf0 \cb2 \
 \'97Registration Query\
 \pard\pardeftab720\partightenfactor0
 
-\f2\fs29\fsmilli14667 \cf0 \cb1 \strokec3 WITH reg_dates AS (\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \cf0 \cb1 WITH reg_dates AS (\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SELECT\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0SELECT\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0user_id,\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0\'a0\'a0user_id,\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0MIN(order_date) AS reg_date\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0\'a0\'a0MIN(order_date) AS reg_date\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0FROM orders\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0FROM orders\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0GROUP BY user_id)\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0GROUP BY user_id)\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 SELECT\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 SELECT\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0DATE_TRUNC('month', reg_date) :: DATE AS foodr_month,\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0DATE_TRUNC('month', reg_date) :: DATE AS foodr_month,\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0COUNT(DISTINCT user_id) AS regs\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0COUNT(DISTINCT user_id) AS regs\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 FROM reg_dates\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 FROM reg_dates\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 GROUP BY foodr_month\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 GROUP BY foodr_month\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 ORDER BY foodr_month ASC\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 ORDER BY foodr_month ASC\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;\
+\f2\fs29\fsmilli14667 LIMIT 3;\
 \
 \'97Active User Query\
 SELECT\'a0
-\f1\fs24 \strokec3 \
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0DATE_TRUNC('month', order_date) :: DATE AS foodr_month,\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0DATE_TRUNC('month', order_date) :: DATE AS foodr_month,\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0COUNT(DISTINCT user_id) AS mau\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 \'a0\'a0COUNT(DISTINCT user_id) AS mau\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 FROM orders\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 FROM orders\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 GROUP BY foodr_month\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 GROUP BY foodr_month\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 ORDER BY foodr_month ASC\'a0
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 ORDER BY foodr_month ASC\'a0
+\f1\fs24 \
 
-\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;
-\f1\fs24 \strokec3 \
+\f2\fs29\fsmilli14667 LIMIT 3;
+\f1\fs24 \
 \
 \
 
-\f2\fs29\fsmilli14667 \strokec3 \'97Registrations Running Total\
-WITH reg_dates AS (\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SELECT\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0user_id,\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0MIN(order_date) AS reg_date\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0FROM orders\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0GROUP BY user_id),\'a0\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0registrations AS (\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SELECT\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0DATE_TRUNC('month', reg_date) :: DATE AS foodr_month,\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0\'a0\'a0COUNT(DISTINCT user_id) AS regs\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0FROM reg_dates\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0GROUP BY foodr_month)\'a0\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 SELECT\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0foodr_month,\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0regs,\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 \'a0\'a0SUM(regs) OVER (ORDER BY foodr_month ASC) AS regs_rt\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 FROM registrations\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 ORDER BY foodr_month ASC\'a0
-\f1\fs24 \strokec3 \
-
-\f2\fs29\fsmilli14667 \strokec3 LIMIT 3;
-\f1\fs24 \strokec3 \
-\
-\pard\pardeftab720\partightenfactor0
-
-\f0\fs32 \cf0 \cb2 \strokec3 \
+\f2\fs29\fsmilli14667 \'97Registrations Running Total\
+WITH reg_dates AS (\
+SELECT user_id, MIN(order_date) AS reg_date\
+FROM orders\
+GROUP BY user_id), registrations AS (\
+SELECT DATE_TRUNC('month', reg_date) :: DATE AS foodr_month,\
+COUNT(DISTINCT user_id) AS regs\
+FROM reg_dates\
+GROUP BY foodr_month)\
+SELECT foodr_month, regs,\
+SUM(regs) OVER (ORDER BY foodr_month ASC) AS regs_rt\
+FROM registrations\
+ORDER BY foodr_month ASC\
+LIMIT 3;\
 \
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs24 \cf0 \
-\pard\pardeftab720\partightenfactor0
-\cf0 \cb1 \strokec3 \
 \
-\pard\pardeftab720\partightenfactor0
-\cf0 \
+
+\f0\fs32 \cb2 \
+\
+
+\f1\fs24 \
+\cb1 \
+\
+\
 }
