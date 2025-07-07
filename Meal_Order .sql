@@ -325,11 +325,17 @@ GROUP BY previous.foodr_month\
 ORDER BY previous.foodr_month ASC\
 LIMIT 3;\
 \
+\'97User Engagement\
 \
 ---Create a table to store user activity by month\
+DROP TABLE IF EXISTS USER_ACTIVITY;\
 CREATE TABLE USER_ACTIVITY AS\
-SELECT DISTINCT DATE_TRUNC('month', ORDER_DATE)::DATE AS DELIVR_MONTH, USER_ID\
+SELECT DISTINCT DATE_TRUNC('month', ORDER_DATE)::DATE AS DELIVR_MONTH,\
+    USER_ID\
 FROM ORDERS;\
+\
+SELECT *\
+FROM USER_ACTIVITY\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs24 \cf0 \
