@@ -1,8 +1,8 @@
 {\rtf1\ansi\ansicpg1252\cocoartf2821
 \cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fmodern\fcharset0 CourierNewPSMT;\f1\froman\fcharset0 Times-Roman;\f2\fswiss\fcharset0 ArialMT;
 }
-{\colortbl;\red255\green255\blue255;\red255\green255\blue255;\red0\green0\blue0;}
-{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;\cssrgb\c0\c0\c0;}
+{\colortbl;\red255\green255\blue255;\red255\green255\blue255;}
+{\*\expandedcolortbl;;\cssrgb\c100000\c100000\c100000;}
 \paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
 \deftab720
 \pard\pardeftab720\partightenfactor0
@@ -272,6 +272,20 @@ FROM maus\
 ORDER BY foodr_month ASC\
 LIMIT 3;\
 \
+---Deltas - query\
+WITH maus AS (SELECT DATE_TRUNC('month', order_date) :: DATE AS foodr_month,\
+COUNT(DISTINCT user_id) AS mau \
+FROM orders\
+GROUP BY foodr_month),\
+maus_lag AS ( \
+SELECT foodr_month, mau, \
+COALESCE(LAG(mau) OVER (ORDER BY foodr_month ASC), \
+1) AS last_mau\
+FROM maus)\
+SELECT foodr_month, mau, mau - last_mau AS mau_delta \
+FROM maus_lag\
+ORDER BY foodr_month\
+LIMIT 3;\
 \
 \pard\pardeftab720\partightenfactor0
 
