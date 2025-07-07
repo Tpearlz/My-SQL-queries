@@ -336,6 +336,8 @@ FROM ORDERS;\
 \
 SELECT *\
 FROM USER_ACTIVITY\
+\
+\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs24 \cf0 \
