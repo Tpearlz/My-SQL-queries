@@ -338,6 +338,11 @@ SELECT *\
 FROM USER_ACTIVITY\
 \
 \
+\
+---Create a table for previous month\'92s user activity\
+CREATE TABLE USER_ACTIVITY_PREVIOUS AS\
+SELECT DELIVR_MONTH, USER_ID\
+FROM USER_ACTIVITY_PREVIOUS;\
 \pard\pardeftab720\partightenfactor0
 
 \f1\fs24 \cf0 \
